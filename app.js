@@ -11,10 +11,14 @@ for (let i = 0; i < items.length; i++) {
     // cd into clones folder and clone repo
     let cmd = `cd ./clones && git clone ${cloneLink}`;
 
-    // FIXME: run script to check for desired results
+    // add name of repo to files.txt
+    cmd += ` && echo ${name} >> ./../files.txt`
+
+    // cd into folder, run script to check for desired results, append names of files to files.txt, cd out of folder
+    cmd += ` && cd ${name} && ./../../vuln-script.sh >> ./../../files.txt && cd ..`;
 
     // remove repo      FIXME: only do this if doesn't contain desired results
-    cmd += `&& rm -rf ${name}`;
+    // cmd += `&& rm -rf ${name}`;
 
     const output = execSync(cmd, { encoding: 'utf-8' });
 }
