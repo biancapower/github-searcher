@@ -6,3 +6,9 @@ const output = execSync('ls', { encoding: 'utf-8' });  // the default is 'buffer
 console.log('Output was:\n', output);
 
 ```
+
+```
+curl -u biancapower "https://api.github.com/search/code?q=setExpandEntityReferences+in:file+language:java+sort:interactions&per_page=3"
+```
+
+`vuln-script.sh` must end with "true"
