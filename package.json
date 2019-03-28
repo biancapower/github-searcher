@@ -1,0 +1,25 @@
+{
+  "name": "github-searcher",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/biancapower/github-searcher.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/biancapower/github-searcher/issues"
+  },
+  "homepage": "https://github.com/biancapower/github-searcher#readme",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "dotenv": "^7.0.0",
+    "node-fetch": "^2.3.0"
+  }
+}
