@@ -1,3 +1,5 @@
 vuln-script.sh
 clones/*
 files.txt
+.env
+node_modules/
