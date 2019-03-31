@@ -1,4 +1,5 @@
-#!/bin/sh
+#!/bin/bash
+
 
 
 # add your script above ^
