@@ -11,6 +11,6 @@ console.log('Output was:\n', output);
 curl -u biancapower "https://api.github.com/search/code?q=setExpandEntityReferences+in:file+language:java+sort:interactions&per_page=3"
 ```
 
-`vuln-script.sh` must end with "true"
+`custom-script.sh` must end with "true"
 
 `https://github.com/SBoudrias/Inquirer.js` for user input / options
