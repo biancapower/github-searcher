@@ -12,3 +12,5 @@ curl -u biancapower "https://api.github.com/search/code?q=setExpandEntityReferen
 ```
 
 `vuln-script.sh` must end with "true"
+
+`https://github.com/SBoudrias/Inquirer.js` for user input / options
