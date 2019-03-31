@@ -1,4 +1,4 @@
-vuln-script.sh
+example-script.sh
 clones/*
 files.txt
 .env
