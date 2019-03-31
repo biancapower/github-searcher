@@ -9,6 +9,7 @@ githubApiCall
     for (let i = 0; i < items.length; i++) {
         let name = items[i].repository.name;
         let fullName = items[i].repository.full_name;
+        let repoOwner = items[i].repository.owner.login;
         let cloneLink = `git@github.com:${fullName}.git`;
         let htmlLink = items[i].repository.html_url;
 
@@ -18,8 +19,8 @@ githubApiCall
         // add repo name and link to files.txt
         cmd += ` && echo '\n============\n' ${name.toUpperCase()}    '('${htmlLink}')' '\n============' >> ./../files.txt`
 
-        // cd into folder && run script to check for desired results (sed adds formatting), appending names of files to files.txt; then if results cd out of folder, else if no results rm directory
-        cmd += ` && cd ${name} && if [[ $(./../../vuln-script.sh | sed 's/^/--- /' | tee -a ./../../files.txt) ]]; then cd ./../../; else cd ./../../ && rm -rf ./clones/${name}; fi`;
+        // cd into folder && run script to check for desired results (sed adds formatting), appending names of files to files.txt; then if results cd out of folder and rename it (eliminate conflicts with other repos of same name), else if no results rm directory
+        cmd += ` && cd ${name} && if [[ $(./../../vuln-script.sh | sed 's/^/--- /' | tee -a ./../../files.txt) ]]; then cd ./../../ && mv ./clones/${name} ./clones/${name}__${repoOwner.toLowerCase()}; else cd ./../../ && rm -rf ./clones/${name}; fi`;
 
         const output = execSync(cmd, { encoding: 'utf-8' });
     }
