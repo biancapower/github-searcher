@@ -1,4 +1,3 @@
-// let json = require('./results.json');       // TODO: use github api directly
 const githubApiCall = require('./getResults');
 const execSync = require('child_process').execSync;
 
@@ -19,11 +18,8 @@ githubApiCall
         // add repo name and link to files.txt
         cmd += ` && echo '\n============\n' ${name.toUpperCase()}    '('${htmlLink}')' '\n============' >> ./../files.txt`
 
-        // cd into folder, run script to check for desired results, append names of files to files.txt, cd out of folder (sed adds formatting)
-        cmd += ` && cd ${name} && ./../../vuln-script.sh | sed 's/^/--- /' >> ./../../files.txt && cd ./../../`;
-
-        // remove repo      FIXME: only do this if doesn't contain desired results
-        // cmd += `&& rm -rf ${name}`;
+        // cd into folder && run script to check for desired results (sed adds formatting), appending names of files to files.txt; then if results cd out of folder, else if no results rm directory
+        cmd += ` && cd ${name} && if [[ $(./../../vuln-script.sh | sed 's/^/--- /' | tee -a ./../../files.txt) ]]; then cd ./../../; else cd ./../../ && rm -rf ./clones/${name}; fi`;
 
         const output = execSync(cmd, { encoding: 'utf-8' });
     }
