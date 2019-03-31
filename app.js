@@ -13,7 +13,13 @@ githubApiCall
         let cloneLink = `git@github.com:${fullName}.git`;
         let htmlLink = items[i].repository.html_url;
         let description = items[i].repository.description;
-        let descriptionString = JSON.stringify(description);
+        let descriptionString;
+
+        if (description != null) {
+            descriptionString = JSON.stringify(description);
+        } else {
+            descriptionString = "No description";
+        }
 
         // cd into clones folder and clone repo     FIXME: create clones folder if doesn't exist
         let cmd = `cd ./clones && git clone ${cloneLink}`;
