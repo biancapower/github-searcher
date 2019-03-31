@@ -12,12 +12,14 @@ githubApiCall
         let repoOwner = items[i].repository.owner.login;
         let cloneLink = `git@github.com:${fullName}.git`;
         let htmlLink = items[i].repository.html_url;
+        let description = items[i].repository.description;
+        let descriptionString = JSON.stringify(description);
 
         // cd into clones folder and clone repo     FIXME: create clones folder if doesn't exist
         let cmd = `cd ./clones && git clone ${cloneLink}`;
 
-        // add repo name and link to files.txt
-        cmd += ` && echo '\n============\n' ${name.toUpperCase()}    '('${htmlLink}')' '\n============' >> ./../files.txt`
+        // add repo name, link, and description to files.txt
+        cmd += ` && echo '\n==============================\n ${name.toUpperCase()}  (${htmlLink}) \n ${descriptionString} \n==============================' >> ./../files.txt`
 
         // cd into folder && run script to check for desired results (sed adds formatting), appending names of files to files.txt; then if results cd out of folder and rename it (eliminate conflicts with other repos of same name), else if no results rm directory
         cmd += ` && cd ${name} && if [[ $(./../../vuln-script.sh | sed 's/^/--- /' | tee -a ./../../files.txt) ]]; then cd ./../../ && mv ./clones/${name} ./clones/${name}__${repoOwner.toLowerCase()}; else cd ./../../ && rm -rf ./clones/${name}; fi`;
