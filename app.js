@@ -2,10 +2,10 @@ const githubApiCall = require('./getResults');
 const execSync = require('child_process').execSync;
 
 githubApiCall
-.then(function (json) {
+.then(function (arr) {
 
-    let items = json.items;
-
+    let items = arr;
+    console.log("items", items.length);
     for (let i = 0; i < items.length; i++) {
         let name = items[i].repository.name;
         let fullName = items[i].repository.full_name;

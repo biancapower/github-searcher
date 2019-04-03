@@ -5,21 +5,25 @@ const searchString = "setExpandEntityReferences";
 // programming language
 const codeLanguage = "java";
 
-// sort order, options include "interactions"
-const sortBy = "interactions";
-
 // page of results
-const pageNumber = 1;
+const pageNumber = 2;
 
 // results per page, max=100
-const perPage = 50;
+const perPage = 100;
+
+// minimum number of stars on repo
+const minStars = 100;
+
+// minimum number of forks from repo
+const minForks = 100;
 
 /*************** REPLACE THE VALUES ABOVE ***************/
 
 module.exports = {
     searchString: searchString,
     codeLanguage: codeLanguage,
-    sortBy: sortBy,
     pageNumber: pageNumber,
     perPage: perPage,
+    minStars: minStars,
+    minForks: minForks,
 }
