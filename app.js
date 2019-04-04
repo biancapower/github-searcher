@@ -1,7 +1,7 @@
 const githubApiCall = require('./getResults');
 const execSync = require('child_process').execSync;
 
-githubApiCall
+githubApiCall()
 .then(function (arr) {
 
     let items = arr;
@@ -33,7 +33,7 @@ githubApiCall
         const output = execSync(cmd, { encoding: 'utf-8', shell: '/bin/bash' });
     }
     
-}).catch(function () {
-    console.error("Err");
+}).catch(function (err) {
+    console.error(err, "Err");
 });
 
