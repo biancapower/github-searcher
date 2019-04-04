@@ -1,6 +1,10 @@
 #!/bin/bash
-
-
+for file in $(grep -l -R setExpandEntityReferences *); do {
+	if ! grep -q "http://xml.org/sax/features/external-parameter-entities" $file; then
+		grep -L "http://apache.org/xml/features/disallow-doctype-decl" $file
+	fi
+}
+done
 
 # add your script above ^
 

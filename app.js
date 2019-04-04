@@ -1,7 +1,7 @@
 const githubApiCall = require('./getResults');
 const execSync = require('child_process').execSync;
 
-githubApiCall
+githubApiCall()
 .then(function (arr) {
 
     let items = arr;
