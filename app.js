@@ -33,7 +33,7 @@ githubApiCall
         const output = execSync(cmd, { encoding: 'utf-8', shell: '/bin/bash' });
     }
     
-}).catch(function () {
-    console.error("Err");
+}).catch(function (err) {
+    console.error(err, "Err");
 });
 
